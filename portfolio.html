@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио — 99МПа</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .port-page { padding: 120px 0 80px; }
+    .port-page h1 { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .port-page .sub { color: #6b6b6b; font-size: 17px; margin-bottom: 56px; }
+    .port-masonry { columns: 3; gap: 6px; }
+    .port-masonry img { width: 100%; display: block; margin-bottom: 6px; break-inside: avoid; border-radius: 2px; transition: opacity 0.3s; cursor: pointer; }
+    .port-masonry img:hover { opacity: 0.88; }
+    .port-lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 500; align-items: center; justify-content: center; }
+    .port-lightbox.open { display: flex; }
+    .port-lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+    .port-lightbox__close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #fff; font-size: 32px; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
+    .port-lightbox__close:hover { opacity: 1; }
+    @media (max-width: 768px) { .port-masonry { columns: 2; } .port-page h1 { font-size: 36px; } }
+    @media (max-width: 480px) { .port-masonry { columns: 1; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">99МПа</a>
+    <ul class="nav__links">
+      <li><a href="index.html#about">О нас</a></li>
+      <li><a href="catalog.html">Каталог</a></li>
+      <li><a href="portfolio.html" style="color:#0f0f0f;font-weight:700">Портфолио</a></li>
+      <li><a href="index.html#additive">Добавки</a></li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="index.html#contact" class="btn btn--sm">Заказать</a>
+    </div>
+  </div>
+</nav>
+
+<section class="port-page">
+  <div class="container">
+    <span class="label">Портфолио</span>
+    <h1>Реализованные объекты</h1>
+    <p class="sub">Реальные проекты из архитектурного бетона — парки, набережные, ЖК, коммерческие объекты</p>
+    <div class="port-masonry" id="masonry"></div>
+  </div>
+</section>
+
+<div class="port-lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="port-lightbox__close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<a href="https://wa.me/79503208833" class="wa-float" target="_blank">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.532 5.875L0 24l6.324-1.508A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.675-.502-5.21-1.378l-.374-.22-3.753.895.942-3.655-.242-.376A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill="white"/></svg>
+</a>
+
+<script>
+const PHOTOS = [
+  'images/portfolio/p11_i2.jpeg',
+  'images/portfolio/p6_i2.jpeg',
+  'images/portfolio/p7_i2.jpeg',
+  'images/portfolio/p10_i2.jpeg',
+  'images/portfolio/p9_i3.jpeg',
+  'images/portfolio/p3_i2.jpeg',
+  'images/portfolio/p4_i3.jpeg',
+  'images/portfolio/p7_i3.jpeg',
+  'images/portfolio/p9_i2.jpeg',
+  'images/portfolio/p4_i2.jpeg',
+  'images/portfolio/p3_i3.jpeg',
+  'images/portfolio/p12_i2.jpeg',
+  'images/portfolio/p12_i3.jpeg',
+  'images/portfolio/p13_i3.jpeg',
+  'images/portfolio/p14_i2.jpeg',
+  'images/portfolio/p19_i1.jpeg',
+  'images/hero.jpeg',
+  'images/bench2.jpeg',
+  'images/modular.jpeg',
+  'images/lounger.jpeg',
+];
+
+const masonry = document.getElementById('masonry');
+PHOTOS.forEach(src => {
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = '';
+  img.loading = 'lazy';
+  img.onclick = () => openLightbox(src);
+  masonry.appendChild(img);
+});
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('port-lightbox__close')) return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

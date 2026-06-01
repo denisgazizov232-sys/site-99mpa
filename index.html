@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99МПа — Архитектурный бетон</title>
+  <meta name="description" content="Производство МАФов и изделий из архитектурного бетона. Скамейки, кашпо, столы, вазоны под заказ. Казань.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">99МПа</a>
+    <ul class="nav__links">
+      <li><a href="#about"     data-i18n="nav_about">О нас</a></li>
+      <li><a href="#products"  data-i18n="nav_products">Продукция</a></li>
+      <li><a href="portfolio.html" data-i18n="nav_portfolio">Портфолио</a></li>
+      <li><a href="#b2b"       data-i18n="nav_b2b">Застройщикам</a></li>
+      <li><a href="#additive"  data-i18n="nav_additive">Добавки</a></li>
+      <li><a href="#contact"   data-i18n="nav_contact">Контакты</a></li>
+    </ul>
+    <div class="nav__right">
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <a href="#contact" class="btn btn--sm" data-i18n="nav_cta">Заказать</a>
+    </div>
+    <button class="nav__burger" onclick="toggleMenu()">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero__bg" style="background-image:url('images/hero.jpeg')"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <p class="hero__label" data-i18n="hero_label">Архитектурный бетон · Казань</p>
+    <h1 class="hero__title" data-i18n="hero_title">Бетон,<br>который&nbsp;живёт<br>в&nbsp;городе</h1>
+    <p class="hero__sub" data-i18n="hero_sub">Скамейки, кашпо, столы и любые МАФы под индивидуальный заказ. Производство в Казани, доставка по России и миру.</p>
+    <div class="hero__btns">
+      <a href="#products" class="btn"          data-i18n="hero_btn1">Смотреть каталог</a>
+      <a href="#contact"  class="btn btn--outline" data-i18n="hero_btn2">Рассчитать проект</a>
+    </div>
+    <div class="hero__price" data-i18n="hero_price">МАФы — от 15 000 ₽ &nbsp;·&nbsp; Добавки — от 1 800 ₽/ведро</div>
+  </div>
+  <div class="hero__scroll">↓</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats__grid">
+      <div class="stats__item"><span class="stats__num">500+</span><span class="stats__label" data-i18n="stat1">реализованных проектов</span></div>
+      <div class="stats__item"><span class="stats__num">8</span><span class="stats__label" data-i18n="stat2">лет на рынке</span></div>
+      <div class="stats__item"><span class="stats__num">30+</span><span class="stats__label" data-i18n="stat3">городов России</span></div>
+      <div class="stats__item"><span class="stats__num">100%</span><span class="stats__label" data-i18n="stat4">собственное производство</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container about__inner">
+    <div class="about__img">
+      <img src="images/about.jpeg" alt="Производство 99МПа">
+    </div>
+    <div class="about__text">
+      <span class="label" data-i18n="about_label">О компании</span>
+      <h2 data-i18n="about_title">Мы делаем бетон красивым</h2>
+      <p data-i18n="about_p1">99МПа — производство архитектурного бетона в Казани. Делаем МАФы для городских пространств, жилых комплексов, частных объектов и коммерческой недвижимости.</p>
+      <p data-i18n="about_p2">Собственные добавки и технология позволяют добиться любого цвета, фактуры и формы. Работаем с архитекторами, застройщиками и частными заказчиками по всей России и за рубежом.</p>
+      <a href="#contact" class="btn" data-i18n="about_btn">Обсудить проект</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <span class="label" data-i18n="how_label">Как мы работаем</span>
+    <h2 data-i18n="how_title">Три шага до готового изделия</h2>
+    <div class="how__grid">
+      <div class="how__step">
+        <div class="how__num">01</div>
+        <h3 data-i18n="how1_title">Заявка и расчёт</h3>
+        <p data-i18n="how1_desc">Опишите проект — менеджер свяжется в течение часа, уточнит размеры и рассчитает стоимость. Бесплатно.</p>
+      </div>
+      <div class="how__step">
+        <div class="how__num">02</div>
+        <h3 data-i18n="how2_title">Производство</h3>
+        <p data-i18n="how2_desc">Изготавливаем изделия на собственном заводе в Казани. Срок — от 14 рабочих дней. Отправляем фото до отгрузки.</p>
+      </div>
+      <div class="how__step">
+        <div class="how__num">03</div>
+        <h3 data-i18n="how3_title">Доставка</h3>
+        <p data-i18n="how3_desc">Доставляем по всей России и за рубеж. Упаковываем надёжно — изделия приходят без сколов.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <span class="label" data-i18n="prod_label">Продукция</span>
+    <h2 data-i18n="prod_title">Каталог изделий</h2>
+    <p class="section-sub" data-i18n="prod_sub">Каталожные позиции и любые изделия под индивидуальный заказ</p>
+
+    <div class="prod-filters">
+      <button class="filter-btn active" data-filter="all"   data-i18n="filt_all">Все</button>
+      <button class="filter-btn" data-filter="bench"  data-i18n="filt_bench">Скамейки</button>
+      <button class="filter-btn" data-filter="planter" data-i18n="filt_planter">Кашпо</button>
+      <button class="filter-btn" data-filter="table"  data-i18n="filt_table">Столы и пуфы</button>
+      <button class="filter-btn" data-filter="modular" data-i18n="filt_modular">Модульные</button>
+    </div>
+
+    <div class="products__grid">
+      <div class="product-card" data-cat="bench">
+        <div class="product-card__img" style="background-image:url('images/catalog/p16_i9.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p1_title">Скамейки со спинкой</h3>
+          <p data-i18n="p1_desc">Бетон + дерево. Прямые, угловые. Цвет по RAL, масло OSMO.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" data-cat="bench">
+        <div class="product-card__img" style="background-image:url('images/catalog/p6_i4.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p7_title">Скамейки без спинки</h3>
+          <p data-i18n="p7_desc">Минималистичные скамьи. Радиусные, прямые, любая длина.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" data-cat="modular">
+        <div class="product-card__img" style="background-image:url('images/catalog/p4_i1.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p2_title">Модульные системы</h3>
+          <p data-i18n="p2_desc">Серии Арте, Дольче, Серенита, Согно, Сильва. Составные секции для зонирования.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" data-cat="table">
+        <div class="product-card__img" style="background-image:url('images/catalog/p24_i1.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p3_title">Столы и шахматные комплексы</h3>
+          <p data-i18n="p3_desc">Обеденные столы, шахматные комплексы, настольный теннис для парков и дворов.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" data-cat="planter">
+        <div class="product-card__img" style="background-image:url('images/catalog/p20_i4.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p4_title">Кашпо и вазоны</h3>
+          <p data-i18n="p4_desc">Серии Нобиле, Джардо, Тоскана, Капри, Рио. Любой размер и цвет по RAL.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" data-cat="bench">
+        <div class="product-card__img" style="background-image:url('images/catalog/p25_i1.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p5_title">Шезлонги и лежаки</h3>
+          <p data-i18n="p5_desc">Для парков, набережных, зон отдыха. Бетон + дерево, устойчивы к любым условиям.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" data-cat="modular">
+        <div class="product-card__img" style="background-image:url('images/catalog/p17_i1.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p6_title">Урны</h3>
+          <p data-i18n="p6_desc">Уличные урны разных форм. В том числе для раздельного сбора отходов.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" data-cat="bench">
+        <div class="product-card__img" style="background-image:url('images/catalog/p7_i7.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p8_title">Радиусные скамейки</h3>
+          <p data-i18n="p8_desc">Для круглых и криволинейных пространств. Любой радиус, любая длина секции.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" data-cat="table">
+        <div class="product-card__img" style="background-image:url('images/catalog/p23_i4.jpeg')"></div>
+        <div class="product-card__body">
+          <h3 data-i18n="p9_title">Мангалы и BBQ</h3>
+          <p data-i18n="p9_desc">Комплекты барбекю Пьетра, Ария. Под заказ любого размера и цвета.</p>
+          <div class="product-card__footer">
+            <a href="catalog.html" class="link" data-i18n="p_link">Смотреть в каталоге →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="products__cta">
+      <a href="catalog.html" class="btn btn--outline" data-i18n="prod_catalog">Открыть полный каталог (229+ позиций)</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <span class="label" data-i18n="port_label">Портфолио</span>
+    <h2 data-i18n="port_title">Реализованные объекты</h2>
+  </div>
+  <div class="portfolio__grid">
+    <div class="portfolio__item portfolio__item--wide" style="background-image:url('images/portfolio/p11_i2.jpeg')">
+      <div class="portfolio__caption">
+        <strong data-i18n="port1_name">Набережная</strong>
+        <span data-i18n="port1_loc">Казань, 2024</span>
+      </div>
+    </div>
+    <div class="portfolio__item" style="background-image:url('images/portfolio/p6_i2.jpeg')">
+      <div class="portfolio__caption">
+        <strong data-i18n="port2_name">New Wave Hall</strong>
+        <span data-i18n="port2_loc">Сочи, 2024</span>
+      </div>
+    </div>
+    <div class="portfolio__item" style="background-image:url('images/portfolio/p10_i2.jpeg')">
+      <div class="portfolio__caption">
+        <strong data-i18n="port3_name">Парк «Казань Экспо»</strong>
+        <span data-i18n="port3_loc">Казань, 2023</span>
+      </div>
+    </div>
+    <div class="portfolio__item" style="background-image:url('images/portfolio/p9_i3.jpeg')">
+      <div class="portfolio__caption">
+        <strong data-i18n="port4_name">Городской парк</strong>
+        <span data-i18n="port4_loc">2023</span>
+      </div>
+    </div>
+    <div class="portfolio__item" style="background-image:url('images/portfolio/p3_i2.jpeg')">
+      <div class="portfolio__caption">
+        <strong data-i18n="port5_name">Архитектурные арки</strong>
+        <span data-i18n="port5_loc">2023</span>
+      </div>
+    </div>
+    <div class="portfolio__item" style="background-image:url('images/portfolio/p4_i3.jpeg')">
+      <div class="portfolio__caption">
+        <strong data-i18n="port6_name">Зона отдыха</strong>
+        <span data-i18n="port6_loc">2024</span>
+      </div>
+    </div>
+  </div>
+  <div class="container portfolio__more">
+    <a href="portfolio.html" class="btn btn--outline-dark" data-i18n="port_more">Смотреть все работы →</a>
+  </div>
+</section>
+
+<!-- B2B -->
+<section class="b2b" id="b2b">
+  <div class="container">
+    <span class="label" data-i18n="b2b_label">Для профессионалов</span>
+    <h2 data-i18n="b2b_title">Работаем с застройщиками и архитекторами</h2>
+    <div class="b2b__grid">
+      <div class="b2b__card">
+        <div class="b2b__icon">🏗️</div>
+        <h3 data-i18n="b2b1_title">Застройщики</h3>
+        <p data-i18n="b2b1_desc">Комплектуем дворовые пространства ЖК под ключ. Работаем по проектной документации, соблюдаем сроки сдачи.</p>
+      </div>
+      <div class="b2b__card">
+        <div class="b2b__icon">📐</div>
+        <h3 data-i18n="b2b2_title">Архитекторы</h3>
+        <p data-i18n="b2b2_desc">Реализуем нестандартные формы по вашим чертежам. Предоставляем технические характеристики для проектной документации.</p>
+      </div>
+      <div class="b2b__card">
+        <div class="b2b__icon">🌍</div>
+        <h3 data-i18n="b2b3_title">Международные проекты</h3>
+        <p data-i18n="b2b3_desc">Поставляем изделия и добавки за рубеж. Опыт работы с клиентами из Европы, СНГ и Ближнего Востока.</p>
+      </div>
+    </div>
+    <a href="#contact" class="btn" data-i18n="b2b_btn">Обсудить сотрудничество</a>
+  </div>
+</section>
+
+<!-- ADDITIVE -->
+<section class="additive" id="additive">
+  <div class="container additive__inner">
+    <div class="additive__text">
+      <span class="label label--light" data-i18n="add_label">Для производителей</span>
+      <h2 data-i18n="add_title">Добавки для архитектурного бетона</h2>
+      <p data-i18n="add_p1">Хотите запустить собственное производство? Продаём комплексные добавки (пластификаторы + пигменты) и обучаем технологии.</p>
+      <ul class="additive__list">
+        <li data-i18n="add_li1">✓ 1 ведро 21,5 кг — на 100 кг бетона</li>
+        <li data-i18n="add_li2">✓ Обучение технологии при покупке</li>
+        <li data-i18n="add_li3">✓ Доставка по всей России и СНГ</li>
+        <li data-i18n="add_li4">✓ Любой цвет по RAL</li>
+      </ul>
+      <div class="additive__price" data-i18n="add_price">от 1 800 ₽ / ведро</div>
+      <a href="#contact" class="btn btn--light" data-i18n="add_btn">Узнать стоимость</a>
+    </div>
+    <div class="additive__img">
+      <img src="images/urn_bench.jpeg" alt="Добавки для бетона 99МПа">
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container contact__inner">
+    <div class="contact__text">
+      <span class="label" data-i18n="cont_label">Контакты</span>
+      <h2 data-i18n="cont_title">Обсудим ваш проект</h2>
+      <p data-i18n="cont_sub">Оставьте заявку — менеджер свяжется в течение часа и поможет рассчитать стоимость.</p>
+      <div class="contact__links">
+        <a href="https://wa.me/79503208833" target="_blank" class="contact__link contact__link--wa" data-i18n="cont_wa">WhatsApp: +7 950 320-88-33</a>
+        <a href="https://www.instagram.com/kwi.project" target="_blank" class="contact__link">Instagram: @kwi.project</a>
+        <a href="mailto:info@99mpa.com" class="contact__link">info@99mpa.com</a>
+        <span class="contact__link">Казань, Россия</span>
+      </div>
+    </div>
+    <form class="contact__form" onsubmit="submitForm(event)">
+      <input type="text" data-i18n-placeholder="form_name" required>
+      <input type="tel"  data-i18n-placeholder="form_phone" required>
+      <select data-i18n-select="form_type">
+        <option value="" data-i18n="form_type_default">Тип заказа</option>
+        <option value="maf"      data-i18n="form_type_maf">МАФы / изделия</option>
+        <option value="additive" data-i18n="form_type_add">Добавки</option>
+        <option value="b2b"      data-i18n="form_type_b2b">Оптовое сотрудничество</option>
+        <option value="custom"   data-i18n="form_type_custom">Индивидуальный заказ</option>
+      </select>
+      <textarea data-i18n-placeholder="form_msg" rows="4"></textarea>
+      <button type="submit" class="btn" data-i18n="form_btn">Отправить заявку</button>
+      <p class="form__note" data-i18n="form_note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <span class="nav__logo">99МПа</span>
+    <p data-i18n="footer_copy">© 2026 99МПа. Архитектурный бетон. Казань.</p>
+    <div class="footer__links">
+      <a href="https://www.instagram.com/kwi.project" target="_blank">Instagram</a>
+      <a href="https://wa.me/79503208833" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/79503208833" class="wa-float" target="_blank" title="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.532 5.875L0 24l6.324-1.508A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.675-.502-5.21-1.378l-.374-.22-3.753.895.942-3.655-.242-.376A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill="white"/>
+  </svg>
+</a>
+
+<script src="i18n.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
