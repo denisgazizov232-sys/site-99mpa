@@ -1,136 +1,56 @@
 const translations = {
-  ru: {
-    nav_about:'О нас', nav_products:'Продукция', nav_portfolio:'Портфолио',
-    nav_b2b:'Застройщикам', nav_additive:'Добавки', nav_contact:'Контакты', nav_cta:'Заказать',
-    hero_label:'Архитектурный бетон · Казань',
-    hero_title:'Бетон,<br>который&nbsp;живёт<br>в&nbsp;городе',
-    hero_sub:'Скамейки, кашпо, столы и любые МАФы под индивидуальный заказ. Производство в Казани, доставка по России и миру.',
-    hero_btn1:'Смотреть каталог', hero_btn2:'Рассчитать проект',
-    hero_price:'МАФы — от 15 000 ₽ &nbsp;·&nbsp; Добавки — от 1 800 ₽/ведро',
-    stat1:'реализованных проектов', stat2:'лет на рынке', stat3:'городов России', stat4:'собственное производство',
-    about_label:'О компании', about_title:'Мы делаем бетон красивым',
-    about_p1:'99МПа — производство архитектурного бетона в Казани. Делаем МАФы для городских пространств, жилых комплексов, частных объектов и коммерческой недвижимости.',
-    about_p2:'Собственные добавки и технология позволяют добиться любого цвета, фактуры и формы. Работаем с архитекторами, застройщиками и частными заказчиками по всей России и за рубежом.',
-    about_btn:'Обсудить проект',
-    how_label:'Процесс', how_title:'Три шага до готового изделия',
-    how1_title:'Заявка и расчёт', how1_desc:'Опишите проект — менеджер свяжется в течение часа, уточнит размеры и рассчитает стоимость. Бесплатно.',
-    how2_title:'Производство', how2_desc:'Изготавливаем изделия на собственном заводе в Казани. Срок — от 14 рабочих дней. Отправляем фото до отгрузки.',
-    how3_title:'Доставка', how3_desc:'Доставляем по всей России и за рубеж. Упаковываем надёжно — изделия приходят без сколов.',
-    prod_label:'Продукция', prod_title:'Каталог изделий',
-    prod_sub:'Каталожные позиции и любые изделия под индивидуальный заказ',
-    filt_all:'Все', filt_bench:'Скамейки', filt_planter:'Кашпо', filt_table:'Столы и пуфы', filt_modular:'Модульные',
-    p1_title:'Скамейки со спинкой', p1_desc:'Бетон + дерево. 1800×756×840 мм и другие размеры. Цвет по RAL, масло OSMO.', p1_price:'от 38 000 ₽',
-    p7_title:'Скамейки без спинки', p7_desc:'Минималистичные скамьи. 1800×450×450 мм, радиусные, прямые. Любая длина.', p7_price:'от 25 000 ₽',
-    p2_title:'Модульные системы', p2_desc:'Серии Арте, Дольче, Серенита. Угловые и составные секции для зонирования пространства.', p2_price:'от 33 000 ₽',
-    p3_title:'Столы и пуфы', p3_desc:'Стол 700×700×1200 мм — от 24 000 ₽. Шахматные комплекты, столы со скамьями под заказ.', p3_price:'от 24 000 ₽',
-    p4_title:'Урны и кашпо', p4_desc:'Серии Нобиле, Джардо, Тоскана, Капри. Объём от 45 л. Цвет по RAL, любая фактура.', p4_price:'от 12 800 ₽',
-    p5_title:'Шезлонги и лежаки', p5_desc:'Лежак 1682×800×926 мм — 81 500 ₽. Шезлонг 1800×800×750 мм — 140 000 ₽.', p5_price:'от 54 000 ₽',
-    p6_title:'Бетонные блоки', p6_desc:'Полусферы, прямоугольники, круги. От 11 000 ₽. Для зонирования и декора.', p6_price:'от 11 000 ₽',
-    p8_title:'Радиусные скамейки', p8_desc:'Скамья радиальная 3000×3000×450 мм — 250 690 ₽. Для круглых и криволинейных пространств.', p8_price:'от 44 000 ₽',
-    p9_title:'Барбекю и мангалы', p9_desc:'Комплект барбекю 1600×700×750 мм — 120 000 ₽. Пьетра, Ария — под заказ.', p9_price:'от 69 000 ₽',
-    p_link:'Запросить →',
-    prod_catalog:'Открыть полный каталог',
-    port_label:'Портфолио', port_title:'Реализованные объекты',
-    port1_name:'Набережная', port1_loc:'Казань, 2024',
-    port2_name:'New Wave Hall', port2_loc:'Сочи, 2024',
-    port3_name:'Парк «Казань Экспо»', port3_loc:'Казань, 2023',
-    port4_name:'Городской парк', port4_loc:'2023',
-    port5_name:'Архитектурные арки', port5_loc:'2023',
-    port6_name:'Зона отдыха', port6_loc:'2024',
-    port_more:'Смотреть все работы в Instagram →',
-    b2b_label:'Для профессионалов', b2b_title:'Работаем с застройщиками и архитекторами',
-    b2b1_title:'Застройщики', b2b1_desc:'Комплектуем дворовые пространства ЖК под ключ. Работаем по проектной документации, соблюдаем сроки сдачи.',
-    b2b2_title:'Архитекторы', b2b2_desc:'Реализуем нестандартные формы по вашим чертежам. Предоставляем технические характеристики для проектной документации.',
-    b2b3_title:'Международные проекты', b2b3_desc:'Поставляем изделия и добавки за рубеж. Опыт работы с клиентами из Европы, СНГ и Ближнего Востока.',
-    b2b_btn:'Обсудить сотрудничество',
-    add_label:'Для производителей', add_title:'Добавки для архитектурного бетона',
-    add_p1:'Хотите запустить собственное производство? Продаём комплексные добавки (пластификаторы + пигменты) и обучаем технологии.',
-    add_li1:'✓ 1 ведро 21,5 кг — на 100 кг бетона', add_li2:'✓ Обучение технологии при покупке',
-    add_li3:'✓ Доставка по всей России и СНГ', add_li4:'✓ Любой цвет по RAL',
-    add_price:'от 1 800 ₽ / ведро', add_btn:'Узнать стоимость',
-    cont_label:'Контакты', cont_title:'Обсудим ваш проект',
-    cont_sub:'Оставьте заявку — менеджер свяжется в течение часа и поможет рассчитать стоимость.',
-    cont_wa:'WhatsApp: +7 950 320-88-33',
-    form_name:'Ваше имя', form_phone:'Телефон или Instagram', form_msg:'Опишите ваш проект',
-    form_type_default:'Тип заказа', form_type_maf:'МАФы / изделия', form_type_add:'Добавки',
-    form_type_b2b:'Оптовое сотрудничество', form_type_custom:'Индивидуальный заказ',
-    form_btn:'Отправить заявку', form_note:'Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности',
-    footer_copy:'© 2026 99МПа. Архитектурный бетон. Казань.',
-  },
-  en: {
-    nav_about:'About', nav_products:'Products', nav_portfolio:'Portfolio',
-    nav_b2b:'Developers', nav_additive:'Additives', nav_contact:'Contact', nav_cta:'Get a Quote',
-    hero_label:'Architectural Concrete · Kazan, Russia',
-    hero_title:'Concrete<br>that lives<br>in the city',
-    hero_sub:'Benches, planters, tables and custom urban furniture. Made in Kazan, shipped across Russia and worldwide.',
-    hero_btn1:'View Catalogue', hero_btn2:'Get a Quote',
-    hero_price:'Urban furniture — from ₽15,000 &nbsp;·&nbsp; Additives — from ₽1,800/bucket',
-    stat1:'completed projects', stat2:'years on the market', stat3:'cities across Russia', stat4:'in-house production',
-    about_label:'About us', about_title:'We make concrete beautiful',
-    about_p1:'99MPa is an architectural concrete manufacturer based in Kazan, Russia. We produce urban furniture for public spaces, residential complexes, private properties and commercial real estate.',
-    about_p2:'Our proprietary additives and technology allow us to achieve any colour, texture and shape. We work with architects, developers and private clients across Russia and internationally.',
-    about_btn:'Discuss a project',
-    how_label:'Process', how_title:'Three steps to your finished product',
-    how1_title:'Request & quote', how1_desc:'Describe your project — our manager will respond within an hour, clarify dimensions and provide a free quote.',
-    how2_title:'Production', how2_desc:'We manufacture products at our own factory in Kazan. Lead time — from 14 working days. We send photos before shipping.',
-    how3_title:'Delivery', how3_desc:'We deliver across Russia and internationally. Products are carefully packed and arrive without damage.',
-    prod_label:'Products', prod_title:'Product catalogue',
-    prod_sub:'Standard catalogue items and fully custom orders',
-    filt_all:'All', filt_bench:'Benches', filt_planter:'Planters', filt_table:'Tables & poufs', filt_modular:'Modular',
-    p1_title:'Benches with backrest', p1_desc:'Concrete + wood. 1800×756×840 mm and custom sizes. RAL colours, OSMO oil finish.', p1_price:'from ₽38,000',
-    p7_title:'Benches without backrest', p7_desc:'Minimalist benches. 1800×450×450 mm, curved or straight. Any length.', p7_price:'from ₽25,000',
-    p2_title:'Modular systems', p2_desc:'Arte, Dolce, Serenita series. Angular and composite sections for space zoning.', p2_price:'from ₽33,000',
-    p3_title:'Tables & poufs', p3_desc:'Table 700×700×1200 mm from ₽24,000. Chess sets, picnic tables made to order.', p3_price:'from ₽24,000',
-    p4_title:'Urns & planters', p4_desc:'Nobile, Giardo, Toscana, Capri series. From 45L. RAL colours, any texture.', p4_price:'from ₽12,800',
-    p5_title:'Sun loungers', p5_desc:'Lounger 1682×800×926 mm — ₽81,500. Sun lounger 1800×800×750 mm — ₽140,000.', p5_price:'from ₽54,000',
-    p6_title:'Concrete blocks', p6_desc:'Hemispheres, rectangles, circles. From ₽11,000. For zoning and decoration.', p6_price:'from ₽11,000',
-    p8_title:'Curved benches', p8_desc:'Radial bench 3000×3000×450 mm — ₽250,690. For curved and circular spaces.', p8_price:'from ₽44,000',
-    p9_title:'BBQ & grills', p9_desc:'BBQ set 1600×700×750 mm — ₽120,000. Pietra, Aria — custom made to order.', p9_price:'from ₽69,000',
-    p_link:'Request →',
-    prod_catalog:'Open full catalogue',
-    port_label:'Portfolio', port_title:'Completed projects',
-    port1_name:'Embankment', port1_loc:'Kazan, 2024',
-    port2_name:'New Wave Hall', port2_loc:'Sochi, 2024',
-    port3_name:'Kazan Expo Park', port3_loc:'Kazan, 2023',
-    port4_name:'City park', port4_loc:'2023',
-    port5_name:'Architectural arches', port5_loc:'2023',
-    port6_name:'Recreation area', port6_loc:'2024',
-    port_more:'View all projects on Instagram →',
-    b2b_label:'For professionals', b2b_title:'We work with developers and architects',
-    b2b1_title:'Developers', b2b1_desc:'We fully furnish residential complex courtyards. We work to project documentation and meet deadlines.',
-    b2b2_title:'Architects', b2b2_desc:'We manufacture non-standard forms from your drawings and provide technical specifications for documentation.',
-    b2b3_title:'International projects', b2b3_desc:'We supply products and additives abroad. Experience with clients from Europe, CIS and the Middle East.',
-    b2b_btn:'Discuss partnership',
-    add_label:'For manufacturers', add_title:'Concrete additives',
-    add_p1:'Want to start your own production? We sell complex additives (plasticizers + pigments) and provide full technology training.',
-    add_li1:'✓ 1 bucket 21.5 kg — for 100 kg of concrete', add_li2:'✓ Technology training included with purchase',
-    add_li3:'✓ Shipping across Russia, CIS and internationally', add_li4:'✓ Any RAL colour',
-    add_price:'from ₽1,800 / bucket', add_btn:'Get pricing',
-    cont_label:'Contact', cont_title:"Let's discuss your project",
-    cont_sub:'Leave a request — our manager will get back to you within an hour.',
-    cont_wa:'WhatsApp: +7 950 320-88-33',
-    form_name:'Your name', form_phone:'Phone or Instagram', form_msg:'Describe your project',
-    form_type_default:'Order type', form_type_maf:'Urban furniture', form_type_add:'Additives',
-    form_type_b2b:'Wholesale partnership', form_type_custom:'Custom order',
-    form_btn:'Send request', form_note:'By clicking the button you agree to our privacy policy',
-    footer_copy:'© 2026 99MPa. Architectural Concrete. Kazan, Russia.',
-  }
+  ru: {"nav_about": "О нас", "nav_products": "Каталог", "nav_portfolio": "Портфолио", "nav_b2b": "Застройщикам", "nav_additive": "Добавки", "nav_contact": "Контакты", "nav_cta": "Заказать", "hero_label": "Архитектурный бетон · Казань", "hero_title": "Бетон, который живёт в городе", "hero_sub": "Скамейки, кашпо, столы и любые МАФы под индивидуальный заказ. Производство в Казани, доставка по России и миру.", "hero_btn1": "Смотреть каталог", "hero_btn2": "Рассчитать проект", "hero_price": "МАФы — от 15 000 ₽ · Добавки — от 1 800 ₽/ведро", "about_label": "О компании", "about_title": "Мы делаем бетон красивым", "about_p1": "99МПа — производство архитектурного бетона в Казани. Делаем МАФы для городских пространств, жилых комплексов, частных объектов и коммерческой недвижимости.", "about_p2": "Собственные добавки и технология позволяют добиться любого цвета, фактуры и формы. Работаем с архитекторами, застройщиками и частными заказчиками по всей России и за рубежом.", "about_btn": "Обсудить проект", "how_label": "Процесс", "how_title": "Три шага до готового изделия", "how1_title": "Заявка и расчёт", "how1_desc": "Опишите проект — менеджер свяжется в течение часа, уточнит размеры и рассчитает стоимость. Бесплатно.", "how2_title": "Производство", "how2_desc": "Изготавливаем изделия на собственном заводе в Казани. Срок — от 14 рабочих дней. Отправляем фото до отгрузки.", "how3_title": "Доставка", "how3_desc": "Доставляем по всей России и за рубеж. Упаковываем надёжно — изделия приходят без сколов.", "prod_label": "Продукция", "prod_title": "Что мы производим", "prod_sub": "Архитектурный бетон — 71 изделие в каталоге, любой цвет и размер под заказ", "port_label": "Портфолио", "port_title": "Реализованные объекты", "port_more": "Смотреть все работы в Instagram →", "b2b_label": "Для профессионалов", "b2b_title": "Работаем с застройщиками и архитекторами", "b2b1_title": "Застройщики", "b2b1_desc": "Комплектуем дворовые пространства ЖК под ключ. Работаем по проектной документации, соблюдаем сроки сдачи.", "b2b2_title": "Архитекторы", "b2b2_desc": "Реализуем нестандартные формы по вашим чертежам. Предоставляем технические характеристики для проектной документации.", "b2b3_title": "Международные проекты", "b2b3_desc": "Поставляем изделия и добавки за рубеж. Опыт работы с клиентами из Европы, СНГ и Ближнего Востока.", "b2b_btn": "Обсудить сотрудничество", "add_label": "Для производителей", "add_title": "Добавки для архитектурного бетона", "add_p1": "Хотите запустить собственное производство? Продаём комплексные добавки (пластификаторы + пигменты) и обучаем технологии.", "add_li1": "1 ведро 21,5 кг — на 100 кг бетона", "add_li2": "Обучение технологии при покупке", "add_li3": "Доставка по всей России и СНГ", "add_li4": "Любой цвет по RAL", "add_price": "от 1 800 ₽ / ведро", "add_btn": "Узнать стоимость", "cont_label": "Контакты", "cont_title": "Обсудим ваш проект", "cont_sub": "Оставьте заявку — менеджер свяжется в течение часа и поможет рассчитать стоимость.", "form_name": "Ваше имя", "form_phone": "Телефон / WhatsApp", "form_type_default": "Тип заказа", "form_type_maf": "МАФы / изделия", "form_type_add": "Добавки", "form_type_b2b": "Оптовое сотрудничество", "form_type_custom": "Индивидуальный заказ", "form_msg": "Опишите проект или вопрос", "form_btn": "Отправить заявку", "form_note": "Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности", "footer_copy": "© 2026 99МПа. Архитектурный бетон. Казань.", "cat_bench": "Скамейки", "cat_urn": "Урны", "cat_planter": "Кашпо и вазоны", "cat_furniture": "Уличная мебель", "cat_sport": "Спортивное оборудование", "cat_pavement": "Пошаговые плиты", "cat_bollard": "Парковочные столбики", "cat_all": "Все изделия", "search_placeholder": "Поиск по названию...", "request_price": "Запросить цену", "dimensions": "Габариты", "price_with_vat": "Цена с НДС"},
+  en: {"nav_about": "About us", "nav_products": "Catalog", "nav_portfolio": "Portfolio", "nav_b2b": "For developers", "nav_additive": "Additives", "nav_contact": "Contacts", "nav_cta": "Order", "hero_label": "Architectural concrete · Kazan", "hero_title": "Concrete that lives in the city", "hero_sub": "Benches, planters, tables and any street furniture to order. Production in Kazan, delivery throughout Russia and the world.", "hero_btn1": "View catalog", "hero_btn2": "Calculate project", "hero_price": "Street furniture — from 15,000 ₽ · Additives — from 1,800 ₽/bucket", "about_label": "About the company", "about_title": "We make concrete beautiful", "about_p1": "99MPa — architectural concrete production in Kazan. We create street furniture for urban spaces, residential complexes, private facilities and commercial real estate.", "about_p2": "Our own additives and technology allow us to achieve any color, texture and shape. We work with architects, developers and private customers throughout Russia and abroad.", "about_btn": "Discuss your project", "how_label": "Process", "how_title": "Three steps to a finished product", "how1_title": "Application and calculation", "how1_desc": "Describe your project — our manager will contact you within an hour, clarify dimensions and calculate the cost. Free.", "how2_title": "Production", "how2_desc": "We manufacture products at our own factory in Kazan. Lead time — from 14 working days. We send photos before shipment.", "how3_title": "Delivery", "how3_desc": "We deliver throughout Russia and abroad. We pack reliably — products arrive without chips.", "prod_label": "Products", "prod_title": "What we produce", "prod_sub": "Architectural concrete — 71 products in the catalog, any color and size to order", "port_label": "Portfolio", "port_title": "Completed projects", "port_more": "View all works on Instagram →", "b2b_label": "For professionals", "b2b_title": "We work with developers and architects", "b2b1_title": "Developers", "b2b1_desc": "We outfit residential complex courtyards turnkey. We work according to project documentation and meet delivery deadlines.", "b2b2_title": "Architects", "b2b2_desc": "We realize custom shapes according to your drawings. We provide technical specifications for project documentation.", "b2b3_title": "International projects", "b2b3_desc": "We supply products and additives abroad. Experience working with clients from Europe, CIS and the Middle East.", "b2b_btn": "Discuss cooperation", "add_label": "For manufacturers", "add_title": "Additives for architectural concrete", "add_p1": "Want to start your own production? We sell comprehensive additives (plasticizers + pigments) and provide technology training.", "add_li1": "1 bucket 21.5 kg — for 100 kg of concrete", "add_li2": "Technology training with purchase", "add_li3": "Delivery throughout Russia and CIS", "add_li4": "Any color per RAL", "add_price": "from 1,800 ₽ / bucket", "add_btn": "Learn pricing", "cont_label": "Contacts", "cont_title": "Let's discuss your project", "cont_sub": "Leave a request — our manager will contact you within an hour and help calculate the cost.", "form_name": "Your name", "form_phone": "Phone / WhatsApp", "form_type_default": "Order type", "form_type_maf": "Street furniture / products", "form_type_add": "Additives", "form_type_b2b": "Wholesale cooperation", "form_type_custom": "Custom order", "form_msg": "Describe your project or question", "form_btn": "Send request", "form_note": "By clicking the button, you agree to the privacy policy", "footer_copy": "© 2026 99MPa. Architectural concrete. Kazan.", "cat_bench": "Benches", "cat_urn": "Urns", "cat_planter": "Planters and vases", "cat_furniture": "Street furniture", "cat_sport": "Sports equipment", "cat_pavement": "Stepping stones", "cat_bollard": "Parking bollards", "cat_all": "All products", "search_placeholder": "Search by name...", "request_price": "Request price", "dimensions": "Dimensions", "price_with_vat": "Price with VAT"},
+  tr: {"nav_about": "Hakkımızda", "nav_products": "Katalog", "nav_portfolio": "Portföy", "nav_b2b": "İnşaatçılara", "nav_additive": "Katkı Maddeleri", "nav_contact": "İletişim", "nav_cta": "Sipariş Ver", "hero_label": "Mimari Beton · Kazan", "hero_title": "Şehirde yaşayan beton", "hero_sub": "Banklar, çiçek saksıları, masalar ve herhangi bir şehir mobilyası özel siparişe göre. Kazan'da üretim, Rusya ve dünyaya teslimat.", "hero_btn1": "Katalogu görüntüle", "hero_btn2": "Projeyi hesapla", "hero_price": "Şehir mobilyası — 15.000 ₽'den · Katkı maddeleri — 1.800 ₽/kova'dan", "about_label": "Şirket Hakkında", "about_title": "Betonu güzel yapıyoruz", "about_p1": "99MPa — Kazan'da mimari beton üretimi. Kentsel alanlar, konut kompleksleri, özel projeler ve ticari gayrimenkul için şehir mobilyası üretiyoruz.", "about_p2": "Kendi katkı maddeleri ve teknolojisi herhangi bir renk, doku ve şekil elde etmemizi sağlar. Rusya'nın her yerinde ve yurt dışında mimarlar, inşaatçılar ve özel müşterilerle çalışıyoruz.", "about_btn": "Projeyi tartış", "how_label": "Süreç", "how_title": "Hazır ürüne üç adım", "how1_title": "Başvuru ve hesaplama", "how1_desc": "Projenizi açıklayın — yöneticimiz bir saat içinde sizinle iletişime geçecek, boyutları açıklayacak ve maliyeti hesaplayacak. Ücretsiz.", "how2_title": "Üretim", "how2_desc": "Kazan'daki kendi fabrikamızda ürünler üretiyoruz. Süre — 14 iş gününden itibaren. Gönderimden önce fotoğraf gönderiyoruz.", "how3_title": "Teslimat", "how3_desc": "Rusya'nın her yerine ve yurt dışına teslimat yapıyoruz. Güvenli bir şekilde paketliyoruz — ürünler çatlaksız geliyor.", "prod_label": "Ürünler", "prod_title": "Ne üretiyoruz", "prod_sub": "Mimari beton — katalogda 71 ürün, herhangi bir renk ve boyut siparişe göre", "port_label": "Portföy", "port_title": "Gerçekleştirilen projeler", "port_more": "Instagram'da tüm işleri görüntüle →", "b2b_label": "Profesyoneller için", "b2b_title": "İnşaatçılar ve mimarlarla çalışıyoruz", "b2b1_title": "İnşaatçılar", "b2b1_desc": "Konut komplekslerinin avlu alanlarını tam hizmet olarak donatıyoruz. Proje belgelerine göre çalışıyoruz, teslim tarihlerini gözetiyoruz.", "b2b2_title": "Mimarlar", "b2b2_desc": "Çizimlerinize göre standart dışı şekiller gerçekleştiriyoruz. Proje belgesi için teknik özellikler sağlıyoruz.", "b2b3_title": "Uluslararası Projeler", "b2b3_desc": "Ürünleri ve katkı maddelerini yurt dışına tedarik ediyoruz. Avrupa, BDT ve Orta Doğu'dan müşterilerle çalışma deneyimi.", "b2b_btn": "İşbirliğini tartış", "add_label": "Üreticiler için", "add_title": "Mimari beton için katkı maddeleri", "add_p1": "Kendi üretiminizi başlatmak mı istiyorsunuz? Kompleks katkı maddeleri (plastikleştiriciler + pigmentler) satıyoruz ve teknolojiyi öğretiyoruz.", "add_li1": "1 kova 21,5 kg — 100 kg betona", "add_li2": "Satın alma sırasında teknoloji eğitimi", "add_li3": "Rusya ve BDT'nin tamamına teslimat", "add_li4": "RAL'a göre herhangi bir renk", "add_price": "1.800 ₽ / kova'dan", "add_btn": "Maliyeti öğren", "cont_label": "İletişim", "cont_title": "Projenizi tartışalım", "cont_sub": "Başvuru bırakın — yöneticimiz bir saat içinde sizinle iletişime geçecek ve maliyeti hesaplamanıza yardımcı olacak.", "form_name": "Adınız", "form_phone": "Telefon / WhatsApp", "form_type_default": "Sipariş türü", "form_type_maf": "Şehir mobilyası / ürünler", "form_type_add": "Katkı maddeleri", "form_type_b2b": "Toptan işbirliği", "form_type_custom": "Özel sipariş", "form_msg": "Projeyi veya soruyu açıklayın", "form_btn": "Başvuru gönder", "form_note": "Düğmeyi tıklatarak gizlilik politikasına katılıyorsunuz", "footer_copy": "© 2026 99MPa. Mimari Beton. Kazan.", "cat_bench": "Banklar", "cat_urn": "Çöp kutuları", "cat_planter": "Çiçek saksıları ve vazolar", "cat_furniture": "Açık hava mobilyası", "cat_sport": "Spor ekipmanları", "cat_pavement": "Adım adım levhalar", "cat_bollard": "Park edilme sütunları", "cat_all": "Tüm ürünler", "search_placeholder": "Ada göre ara...", "request_price": "Fiyat talep et", "dimensions": "Boyutlar", "price_with_vat": "KDV dahil fiyat"},
+  es: {"nav_about": "Acerca de nosotros", "nav_products": "Catálogo", "nav_portfolio": "Portafolio", "nav_b2b": "Para constructores", "nav_additive": "Aditivos", "nav_contact": "Contactos", "nav_cta": "Hacer pedido", "hero_label": "Hormigón arquitectónico · Kazán", "hero_title": "Hormigón que vive en la ciudad", "hero_sub": "Bancos, macetas, mesas y cualquier mobiliario urbano bajo encargo personalizado. Producción en Kazán, entrega a toda Rusia y el mundo.", "hero_btn1": "Ver catálogo", "hero_btn2": "Calcular proyecto", "hero_price": "Mobiliario urbano — desde 15 000 ₽ · Aditivos — desde 1 800 ₽/cubo", "about_label": "Sobre la empresa", "about_title": "Hacemos el hormigón hermoso", "about_p1": "99МПа — producción de hormigón arquitectónico en Kazán. Fabricamos mobiliario urbano para espacios públicos, complejos residenciales, objetos privados e inmuebles comerciales.", "about_p2": "Nuestros propios aditivos y tecnología nos permiten lograr cualquier color, textura y forma. Trabajamos con arquitectos, constructores y clientes privados en toda Rusia y en el extranjero.", "about_btn": "Discutir proyecto", "how_label": "Proceso", "how_title": "Tres pasos hacia el producto terminado", "how1_title": "Solicitud y cálculo", "how1_desc": "Describa el proyecto — el gerente se comunicará dentro de una hora, aclarará las dimensiones y calculará el costo. Gratis.", "how2_title": "Producción", "how2_desc": "Fabricamos productos en nuestra propia fábrica en Kazán. Plazo — desde 14 días hábiles. Enviamos fotos antes del envío.", "how3_title": "Entrega", "how3_desc": "Entregamos en toda Rusia y en el extranjero. Embalamos de manera confiable — los productos llegan sin daños.", "prod_label": "Productos", "prod_title": "Qué producimos", "prod_sub": "Hormigón arquitectónico — 71 productos en el catálogo, cualquier color y tamaño bajo encargo", "port_label": "Portafolio", "port_title": "Proyectos realizados", "port_more": "Ver todos los trabajos en Instagram →", "b2b_label": "Para profesionales", "b2b_title": "Trabajamos con constructores y arquitectos", "b2b1_title": "Constructores", "b2b1_desc": "Equipamos espacios de patios de complejos residenciales llave en mano. Trabajamos según documentación del proyecto, cumplimos plazos de entrega.", "b2b2_title": "Arquitectos", "b2b2_desc": "Realizamos formas no estándar según sus dibujos. Proporcionamos características técnicas para documentación del proyecto.", "b2b3_title": "Proyectos internacionales", "b2b3_desc": "Suministramos productos y aditivos al extranjero. Experiencia trabajando con clientes de Europa, CEI y Oriente Medio.", "b2b_btn": "Discutir cooperación", "add_label": "Para fabricantes", "add_title": "Aditivos para hormigón arquitectónico", "add_p1": "¿Quiere lanzar su propia producción? Vendemos aditivos integrales (plastificantes + pigmentos) y enseñamos la tecnología.", "add_li1": "1 cubo de 21,5 kg — para 100 kg de hormigón", "add_li2": "Capacitación tecnológica con la compra", "add_li3": "Entrega a toda Rusia y CEI", "add_li4": "Cualquier color según RAL", "add_price": "desde 1 800 ₽ / cubo", "add_btn": "Consultar precio", "cont_label": "Contactos", "cont_title": "Discutiremos su proyecto", "cont_sub": "Deje una solicitud — el gerente se comunicará dentro de una hora y lo ayudará a calcular el costo.", "form_name": "Su nombre", "form_phone": "Teléfono / WhatsApp", "form_type_default": "Tipo de pedido", "form_type_maf": "Mobiliario urbano / productos", "form_type_add": "Aditivos", "form_type_b2b": "Cooperación mayorista", "form_type_custom": "Encargo personalizado", "form_msg": "Describa el proyecto o pregunta", "form_btn": "Enviar solicitud", "form_note": "Al hacer clic en el botón, acepta la política de privacidad", "footer_copy": "© 2026 99МПа. Hormigón arquitectónico. Kazán.", "cat_bench": "Bancos", "cat_urn": "Urnas", "cat_planter": "Macetas y jardineras", "cat_furniture": "Mobiliario exterior", "cat_sport": "Equipamiento deportivo", "cat_pavement": "Losas de paso", "cat_bollard": "Bolardos de aparcamiento", "cat_all": "Todos los productos", "search_placeholder": "Buscar por nombre...", "request_price": "Solicitar precio", "dimensions": "Dimensiones", "price_with_vat": "Precio con IVA"},
+  fr: {"nav_about": "À propos", "nav_products": "Catalogue", "nav_portfolio": "Portfolio", "nav_b2b": "Pour les promoteurs", "nav_additive": "Additifs", "nav_contact": "Contacts", "nav_cta": "Commander", "hero_label": "Béton architectonique · Kazan", "hero_title": "Le béton qui vit dans la ville", "hero_sub": "Bancs, jardinières, tables et tous les équipements urbains sur mesure. Production à Kazan, livraison en Russie et dans le monde.", "hero_btn1": "Voir le catalogue", "hero_btn2": "Calculer le projet", "hero_price": "Équipements urbains — à partir de 15 000 ₽ · Additifs — à partir de 1 800 ₽/seau", "about_label": "À propos de l'entreprise", "about_title": "Nous rendons le béton beau", "about_p1": "99МПа — production de béton architectonique à Kazan. Nous créons des équipements urbains pour les espaces publics, les complexes résidentiels, les projets privés et l'immobilier commercial.", "about_p2": "Nos additifs propriétaires et notre technologie nous permettent d'obtenir n'importe quelle couleur, texture et forme. Nous travaillons avec des architectes, des promoteurs et des clients privés dans toute la Russie et à l'étranger.", "about_btn": "Discuter du projet", "how_label": "Processus", "how_title": "Trois étapes jusqu'au produit fini", "how1_title": "Demande et calcul", "how1_desc": "Décrivez votre projet — un responsable vous contactera dans l'heure, clarifiera les dimensions et calculera le coût. Gratuitement.", "how2_title": "Production", "how2_desc": "Nous produisons les articles dans notre propre usine à Kazan. Délai — à partir de 14 jours ouvrables. Nous envoyons des photos avant l'expédition.", "how3_title": "Livraison", "how3_desc": "Nous livrons dans toute la Russie et à l'étranger. Emballage fiable — les articles arrivent sans ébréchures.", "prod_label": "Produits", "prod_title": "Ce que nous produisons", "prod_sub": "Béton architectonique — 71 articles au catalogue, toute couleur et taille sur commande", "port_label": "Portfolio", "port_title": "Projets réalisés", "port_more": "Voir tous les travaux sur Instagram →", "b2b_label": "Pour les professionnels", "b2b_title": "Nous travaillons avec les promoteurs et les architectes", "b2b1_title": "Promoteurs", "b2b1_desc": "Nous équipons les espaces communs des complexes résidentiels clé en main. Nous travaillons selon la documentation de projet et respectons les délais de livraison.", "b2b2_title": "Architectes", "b2b2_desc": "Nous réalisons des formes non-standard selon vos plans. Nous fournissons les caractéristiques techniques pour la documentation de projet.", "b2b3_title": "Projets internationaux", "b2b3_desc": "Nous livrons des produits et des additifs à l'étranger. Expérience de travail avec des clients d'Europe, de la CEI et du Moyen-Orient.", "b2b_btn": "Discuter de la coopération", "add_label": "Pour les producteurs", "add_title": "Additifs pour béton architectonique", "add_p1": "Vous voulez lancer votre propre production ? Nous vendons des additifs complets (plastifiants + pigments) et enseignons la technologie.", "add_li1": "1 seau 21,5 kg — pour 100 kg de béton", "add_li2": "Enseignement de la technologie à l'achat", "add_li3": "Livraison dans toute la Russie et la CEI", "add_li4": "Toute couleur selon RAL", "add_price": "à partir de 1 800 ₽ / seau", "add_btn": "Connaître le coût", "cont_label": "Contacts", "cont_title": "Parlons de votre projet", "cont_sub": "Laissez une demande — un responsable vous contactera dans l'heure et vous aidera à calculer le coût.", "form_name": "Votre nom", "form_phone": "Téléphone / WhatsApp", "form_type_default": "Type de commande", "form_type_maf": "Équipements urbains / articles", "form_type_add": "Additifs", "form_type_b2b": "Coopération en gros", "form_type_custom": "Commande sur mesure", "form_msg": "Décrivez votre projet ou votre question", "form_btn": "Envoyer la demande", "form_note": "En cliquant sur le bouton, vous acceptez la politique de confidentialité", "footer_copy": "© 2026 99МПа. Béton architectonique. Kazan.", "cat_bench": "Bancs", "cat_urn": "Urnes", "cat_planter": "Jardinières et vases", "cat_furniture": "Mobilier urbain", "cat_sport": "Équipements sportifs", "cat_pavement": "Dalles pas à pas", "cat_bollard": "Bornes de stationnement", "cat_all": "Tous les articles", "search_placeholder": "Rechercher par nom...", "request_price": "Demander le prix", "dimensions": "Dimensions", "price_with_vat": "Prix TTC"},
 };
 
+
+const LANG_NAMES = { ru: 'RU', en: 'EN', tr: 'TR', es: 'ES', fr: 'FR' };
+let currentLang = localStorage.getItem('lang') || 'ru';
+
 function setLang(lang) {
-  document.documentElement.lang = lang;
+  if (!translations[lang]) return;
+  currentLang = lang;
   localStorage.setItem('lang', lang);
-  const t = translations[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    if (t[el.dataset.i18n] !== undefined) el.innerHTML = t[el.dataset.i18n];
+  document.documentElement.lang = lang;
+
+  // Обновляем активную кнопку
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
   });
+
+  const t = translations[lang];
+
+  // data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // data-i18n-placeholder
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    if (t[el.dataset.i18nPlaceholder] !== undefined) el.placeholder = t[el.dataset.i18nPlaceholder];
+    const key = el.dataset.i18nPlaceholder;
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  // select options
+  document.querySelectorAll('[data-i18n-select]').forEach(el => {
+    el.querySelectorAll('option[data-i18n]').forEach(opt => {
+      const key = opt.dataset.i18n;
+      if (t[key] !== undefined) opt.textContent = t[key];
+    });
   });
 }
 
-(function(){
-  const saved = localStorage.getItem('lang');
-  const browser = navigator.language.startsWith('ru') ? 'ru' : 'en';
-  setLang(saved || browser);
-})();
+// RTL для арабского
+function applyRTL(lang) {
+  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+}
+
+// Инициализация
+document.addEventListener('DOMContentLoaded', () => {
+  setLang(currentLang);
+  applyRTL(currentLang);
+});
