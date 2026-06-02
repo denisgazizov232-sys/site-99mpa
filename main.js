@@ -29,48 +29,19 @@ function toggleMenu() {
   m.classList.toggle('open', menuOpen);
 }
 
-// Home products — рендер из catalog_data.js
-function renderHomeProducts(filter) {
-  const grid = document.getElementById('home-products-grid');
-  if (!grid || typeof ITEMS === 'undefined') return;
-
-  let items = filter === 'all' ? ITEMS : ITEMS.filter(i => i.cat === filter);
-  // По одному представителю каждой серии, макс 9
-  const seen = new Set();
-  const unique = [];
-  for (const item of items) {
-    const key = item.series;
-    if (!seen.has(key)) { seen.add(key); unique.push(item); }
-    if (unique.length >= 9) break;
-  }
-
-  grid.innerHTML = unique.map(item => {
-    const img = item.img ? `style="background-image:url('${item.img}')"` : '';
-    return `
-    <div class="cat-card" data-cat="${item.cat}" onclick="window.location='catalog.html'">
-      <div class="cat-card__img" ${img}></div>
-      <div class="cat-card__body">
-        <div class="cat-card__series">${item.series}</div>
-        <div class="cat-card__name">${item.name}</div>
-        <div class="cat-card__size">${item.size}</div>
-        <div class="cat-card__footer">
-          <span class="cat-card__cta">Смотреть в каталоге →</span>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+// Подставляем фото первого изделия каждого раздела в плитки на главной
+function initSectionCards() {
+  if (typeof ITEMS === 'undefined') return;
+  const cats = ['bench','urn','planter','furniture','sport','pavement','bollard'];
+  cats.forEach(cat => {
+    const el = document.getElementById('sec-' + cat);
+    if (!el) return;
+    const item = ITEMS.find(i => i.cat === cat && i.img);
+    if (item) el.style.backgroundImage = `url('${item.img}')`;
+  });
 }
 
-// Product filter
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderHomeProducts(btn.dataset.filter);
-  });
-});
-
-renderHomeProducts('all');
+initSectionCards();
 
 // Form submit → Telegram
 async function submitForm(e) {
@@ -119,10 +90,12 @@ async function submitForm(e) {
   }, 4000);
 }
 
-// Smooth scroll
+// Smooth scroll — только для якорных ссылок на этой же странице
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const t = document.querySelector(href);
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });

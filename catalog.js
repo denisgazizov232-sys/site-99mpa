@@ -179,4 +179,11 @@ document.querySelector('[data-cat="all"]').addEventListener('click', e => {
 
 // Init
 buildSidebar();
-filterCatalog();
+
+// Если в URL есть якорь #bench, #urn и т.д. — открываем нужный раздел
+const hash = window.location.hash.replace('#', '');
+if (hash && ['bench','urn','planter','furniture','sport','pavement','bollard'].includes(hash)) {
+  setFilter(hash, '');
+} else {
+  filterCatalog();
+}
