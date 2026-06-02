@@ -11,8 +11,8 @@ function buildSidebar() {
   allCount.textContent = ITEMS.length;
 
   SECTION_ORDER.forEach(cat => {
-    const sec = SECTIONS[cat];
-    if (!sec) return;
+    const secName = SECTIONS[cat];
+    if (!secName) return;
     const catItems = ITEMS.filter(i => i.cat === cat);
     if (!catItems.length) return;
 
@@ -26,7 +26,7 @@ function buildSidebar() {
     groupTitle.className = 'sidebar__link sidebar__group-title';
     groupTitle.dataset.cat = cat;
     groupTitle.dataset.series = '';
-    groupTitle.innerHTML = `${sec.name} <span class="sidebar__count">${catItems.length}</span>`;
+    groupTitle.innerHTML = `${secName} <span class="sidebar__count">${catItems.length}</span>`;
     groupTitle.addEventListener('click', e => { e.preventDefault(); setFilter(cat, ''); });
     group.appendChild(groupTitle);
 
@@ -69,7 +69,7 @@ function setFilter(cat, series) {
   // Заголовок
   let title = 'Все изделия';
   if (cat !== 'all') {
-    title = SECTIONS[cat]?.name || cat;
+    title = SECTIONS[cat] || cat;
     if (series) title = series;
   }
   document.getElementById('cat-title').textContent = title;
@@ -137,8 +137,8 @@ function openModal(num) {
   const item = ITEMS.find(i => i.n === num);
   if (!item) return;
 
-  const sec = SECTIONS[item.cat];
-  document.getElementById('modal-cat').textContent = (sec?.name || '') + (item.series ? ' · ' + item.series : '');
+  const sec = SECTIONS[item.cat] || '';
+  document.getElementById('modal-cat').textContent = sec + (item.series ? ' · ' + item.series : '');
   document.getElementById('modal-title').textContent = item.name;
   document.getElementById('modal-size').textContent = item.size ? 'Габариты: ' + item.size : '';
   document.getElementById('modal-desc').textContent = item.desc || '';
