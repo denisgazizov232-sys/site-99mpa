@@ -44,18 +44,21 @@ function renderHomeProducts(filter) {
     if (unique.length >= 9) break;
   }
 
-  grid.innerHTML = unique.map(item => `
-    <div class="product-card" data-cat="${item.cat}">
-      <div class="product-card__img" style="background:${item.img ? '#fff' : '#f5f5f3'};background-image:url('${item.img}');background-size:contain;background-position:center;background-repeat:no-repeat;${item.img ? 'border-bottom:1px solid #f0f0ee' : ''}"></div>
-      <div class="product-card__body">
-        <h3>${item.series}</h3>
-        <p>${item.name}</p>
-        <div class="product-card__footer">
-          <a href="catalog.html" class="link">Смотреть в каталоге →</a>
+  grid.innerHTML = unique.map(item => {
+    const img = item.img ? `style="background-image:url('${item.img}')"` : '';
+    return `
+    <div class="cat-card" data-cat="${item.cat}" onclick="window.location='catalog.html'">
+      <div class="cat-card__img" ${img}></div>
+      <div class="cat-card__body">
+        <div class="cat-card__series">${item.series}</div>
+        <div class="cat-card__name">${item.name}</div>
+        <div class="cat-card__size">${item.size}</div>
+        <div class="cat-card__footer">
+          <span class="cat-card__cta">Смотреть в каталоге →</span>
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 // Product filter
