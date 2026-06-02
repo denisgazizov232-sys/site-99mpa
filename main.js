@@ -69,18 +69,51 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 renderHomeProducts('all');
 
-// Form submit
-function submitForm(e) {
+// Form submit → Telegram
+async function submitForm(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button[type=submit]');
-  const lang = document.documentElement.lang || 'ru';
-  btn.textContent = lang === 'ru' ? '✓ Отправлено!' : '✓ Sent!';
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
+  const inputs = form.querySelectorAll('input, select, textarea');
+
+  const name  = inputs[0].value.trim();
+  const phone = inputs[1].value.trim();
+  const type  = inputs[2].value;
+  const msg   = inputs[3].value.trim();
+
+  const typeLabels = {
+    maf: 'МАФы / изделия', additive: 'Добавки',
+    b2b: 'Оптовое сотрудничество', custom: 'Индивидуальный заказ'
+  };
+
+  const text = `🏗 Новая заявка с сайта 99mpa\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📦 Тип: ${typeLabels[type] || type || 'не указан'}\n💬 Сообщение: ${msg || '—'}`;
+
+  btn.textContent = '...';
   btn.disabled = true;
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot8600434161:AAELat2KBX2sELTjumoBJhmhoYb_SwBWCdk/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: 716466548, text })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      btn.textContent = '✓ Заявка отправлена!';
+      form.reset();
+    } else {
+      throw new Error();
+    }
+  } catch {
+    btn.textContent = 'Ошибка — напишите в WhatsApp';
+    btn.style.background = '#c0392b';
+  }
+
   setTimeout(() => {
-    btn.innerHTML = translations[lang].form_btn;
+    btn.textContent = 'Отправить заявку';
     btn.disabled = false;
-    e.target.reset();
-  }, 3000);
+    btn.style.background = '';
+  }, 4000);
 }
 
 // Smooth scroll
