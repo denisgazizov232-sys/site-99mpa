@@ -152,6 +152,10 @@ function openModal(num) {
     imgEl.style.display = 'none';
   }
 
+  // WhatsApp с текстом изделия
+  const waText = encodeURIComponent(`Здравствуйте! Интересует изделие "${item.name}" (серия ${item.series}, ${item.size}). Подскажите цену и сроки.`);
+  document.getElementById('modal-wa').href = `https://wa.me/79503208844?text=${waText}`;
+
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
