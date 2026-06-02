@@ -29,17 +29,45 @@ function toggleMenu() {
   m.classList.toggle('open', menuOpen);
 }
 
+// Home products — рендер из catalog_data.js
+function renderHomeProducts(filter) {
+  const grid = document.getElementById('home-products-grid');
+  if (!grid || typeof ITEMS === 'undefined') return;
+
+  let items = filter === 'all' ? ITEMS : ITEMS.filter(i => i.cat === filter);
+  // По одному представителю каждой серии, макс 9
+  const seen = new Set();
+  const unique = [];
+  for (const item of items) {
+    const key = item.series;
+    if (!seen.has(key)) { seen.add(key); unique.push(item); }
+    if (unique.length >= 9) break;
+  }
+
+  grid.innerHTML = unique.map(item => `
+    <div class="product-card" data-cat="${item.cat}">
+      <div class="product-card__img" style="background:${item.img ? '#fff' : '#f5f5f3'};background-image:url('${item.img}');background-size:contain;background-position:center;background-repeat:no-repeat;${item.img ? 'border-bottom:1px solid #f0f0ee' : ''}"></div>
+      <div class="product-card__body">
+        <h3>${item.series}</h3>
+        <p>${item.name}</p>
+        <div class="product-card__footer">
+          <a href="catalog.html" class="link">Смотреть в каталоге →</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
 // Product filter
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.classList.toggle('hidden', filter !== 'all' && card.dataset.cat !== filter);
-    });
+    renderHomeProducts(btn.dataset.filter);
   });
 });
+
+renderHomeProducts('all');
 
 // Form submit
 function submitForm(e) {
