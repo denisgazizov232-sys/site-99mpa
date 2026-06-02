@@ -1,6 +1,26 @@
 // Динамический сайдбар: разделы → серии
 const SECTION_ORDER = ['bench','urn','planter','furniture','sport','pavement','bollard'];
 
+// Переводы разделов из i18n
+function getT(key) {
+  try {
+    const lang = localStorage.getItem('lang') || 'ru';
+    return (translations[lang] && translations[lang][key]) || translations['ru'][key] || key;
+  } catch(e) { return key; }
+}
+
+// Переводы названий разделов
+const SECTION_I18N = {
+  'all': 'cat_all',
+  'bench': 'cat_bench',
+  'urn': 'cat_urn',
+  'planter': 'cat_planter',
+  'furniture': 'cat_furniture',
+  'sport': 'cat_sport',
+  'pavement': 'cat_pavement',
+  'bollard': 'cat_bollard',
+};
+
 let currentCat = 'all';
 let currentSeries = '';
 
@@ -11,7 +31,7 @@ function buildSidebar() {
   allCount.textContent = ITEMS.length;
 
   SECTION_ORDER.forEach(cat => {
-    const secName = SECTIONS[cat];
+    const secName = getT(SECTION_I18N[cat]) || SECTIONS[cat];
     if (!secName) return;
     const catItems = ITEMS.filter(i => i.cat === cat);
     if (!catItems.length) return;
@@ -67,9 +87,9 @@ function setFilter(cat, series) {
   });
 
   // Заголовок
-  let title = 'Все изделия';
+  let title = getT('cat_all');
   if (cat !== 'all') {
-    title = SECTIONS[cat] || cat;
+    title = getT(SECTION_I18N[cat]) || SECTIONS[cat] || cat;
     if (series) title = series;
   }
   document.getElementById('cat-title').textContent = title;
@@ -180,6 +200,28 @@ document.querySelector('[data-cat="all"]').addEventListener('click', e => {
   document.getElementById('search').value = '';
   filterCatalog();
 });
+
+// Перестраиваем каталог при смене языка
+const _origSetLang = typeof setLang === 'function' ? setLang : null;
+if (_origSetLang) {
+  window.setLang = function(lang) {
+    _origSetLang(lang);
+    // Пересобираем сайдбар с новыми переводами
+    const menu = document.getElementById('sidebar-menu');
+    if (menu) {
+      // Оставляем первый элемент "Все изделия"
+      while (menu.children.length > 1) menu.removeChild(menu.lastChild);
+      menu.children[0].querySelector('a').childNodes[0].textContent = getT('cat_all') + ' ';
+      buildSidebar();
+    }
+    // Обновляем заголовок
+    const titleEl = document.getElementById('cat-title');
+    if (titleEl && currentCat) {
+      if (currentCat === 'all') titleEl.textContent = getT('cat_all');
+      else titleEl.textContent = getT(SECTION_I18N[currentCat]) || SECTIONS[currentCat];
+    }
+  };
+}
 
 // Init
 buildSidebar();
