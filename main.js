@@ -50,6 +50,9 @@ async function submitForm(e) {
   const btn = form.querySelector('button[type=submit]');
   const inputs = form.querySelectorAll('input, select, textarea');
 
+  // Honeypot — если заполнено, это бот
+  if (document.getElementById('hp_field') && document.getElementById('hp_field').value) return;
+
   const name  = inputs[0].value.trim();
   const phone = inputs[1].value.trim();
   const type  = inputs[2].value;

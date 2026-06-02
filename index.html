@@ -387,6 +387,8 @@
       </div>
     </div>
     <form class="contact__form" onsubmit="submitForm(event)">
+      <!-- honeypot: боты заполняют это поле, люди не видят -->
+      <input type="text" name="website" id="hp_field" style="display:none;position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
       <input type="text" data-i18n-placeholder="form_name" required>
       <input type="tel"  data-i18n-placeholder="form_phone" required>
       <select data-i18n-select="form_type">
