@@ -48,15 +48,38 @@ ul { list-style: none; }
 .nav.scrolled .nav__links a { color: var(--muted); }
 .nav.scrolled .nav__links a:hover { color: var(--black); }
 .nav__right { display: flex; align-items: center; gap: 10px; }
-.lang-btn { background: none; border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 2px; cursor: pointer; letter-spacing: 0.05em; transition: all var(--tr); }
-.lang-btn:hover { background: rgba(255,255,255,0.15); }
-.nav.scrolled .lang-btn { border-color: #ddd; color: var(--muted); }
-.nav.scrolled .lang-btn:hover { background: var(--gray); color: var(--black); }
-.nav__burger { display: none; background: none; border: none; font-size: 22px; color: var(--white); cursor: pointer; }
+.nav__burger { display: none; background: none; border: none; font-size: 22px; color: var(--white); cursor: pointer; padding: 4px 8px; }
 .nav.scrolled .nav__burger { color: var(--black); }
-.lang-switcher { display: flex; gap: 2px; }
-.lang-btn.active { background: rgba(255,255,255,0.25); color: var(--white); }
-.nav.scrolled .lang-btn.active { background: var(--black); color: var(--white); border-color: var(--black); }
+
+/* Языковой переключатель — кнопка с выпадающим меню */
+.lang-switcher { position: relative; }
+.lang-switcher__btn {
+  background: none; border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.8);
+  font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 4px;
+  cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all var(--tr);
+}
+.lang-switcher__btn:hover { background: rgba(255,255,255,0.15); }
+.nav.scrolled .lang-switcher__btn { border-color: #ddd; color: var(--muted); }
+.nav.scrolled .lang-switcher__btn:hover { background: var(--gray); color: var(--black); }
+
+.lang-switcher__dropdown {
+  display: none; position: absolute; top: calc(100% + 8px); right: 0;
+  background: #fff; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 6px; z-index: 200; min-width: 130px;
+}
+.lang-switcher__dropdown.open { display: block; }
+.lang-option {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 5px; cursor: pointer;
+  font-size: 13px; font-weight: 600; color: var(--black);
+  transition: background var(--tr); white-space: nowrap;
+}
+.lang-option:hover { background: var(--gray); }
+.lang-option.active { background: var(--black); color: #fff; }
+.lang-option__flag { font-size: 18px; line-height: 1; }
+
+/* Старые кнопки — скрыть */
+.lang-btn { display: none; }
 .nav__social { display: flex; align-items: center; color: rgba(255,255,255,0.7); transition: color var(--tr); }
 .nav__social:hover { color: var(--white); }
 .nav.scrolled .nav__social { color: var(--muted); }
@@ -187,10 +210,14 @@ ul { list-style: none; }
 /* Mobile nav */
 .nav__mobile { display: none; }
 @media (max-width: 960px) {
-  .nav__links, .nav__right .btn--sm { display: none; }
+  .nav__links { display: none; }
+  .nav__right .btn--sm { display: none; }
+  .nav__right .nav__social { display: none; }
   .nav__burger { display: block; }
   .nav__mobile.open { display: flex; flex-direction: column; position: fixed; top: 70px; left: 0; right: 0; background: var(--white); padding: 20px 24px; gap: 4px; box-shadow: 0 12px 32px rgba(0,0,0,0.1); z-index: 99; }
   .nav__mobile a { font-size: 17px; font-weight: 600; color: var(--black); padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+  .nav__inner { gap: 12px; }
+  .lang-switcher__dropdown { right: auto; left: 0; }
 }
 
 /* Responsive */

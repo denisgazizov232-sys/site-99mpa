@@ -1,33 +1,4 @@
-// Nav scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
-
-// Mobile menu
-let menuOpen = false;
-function toggleMenu() {
-  menuOpen = !menuOpen;
-  let m = document.querySelector('.nav__mobile');
-  if (!m) {
-    m = document.createElement('div');
-    m.className = 'nav__mobile';
-    const lang = document.documentElement.lang || 'ru';
-    const t = translations[lang];
-    const items = [
-      ['#about', t.nav_about], ['#products', t.nav_products], ['#portfolio', t.nav_portfolio],
-      ['#b2b', t.nav_b2b], ['#additive', t.nav_additive], ['#contact', t.nav_contact]
-    ];
-    items.forEach(([href, label]) => {
-      const a = document.createElement('a');
-      a.href = href; a.textContent = label;
-      a.onclick = () => { menuOpen = false; m.classList.remove('open'); };
-      m.appendChild(a);
-    });
-    document.body.appendChild(m);
-  }
-  m.classList.toggle('open', menuOpen);
-}
+// Nav scroll и toggleMenu теперь в nav.js
 
 // Подставляем фото первого изделия каждого раздела в плитки на главной
 function initSectionCards() {
