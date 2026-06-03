@@ -223,13 +223,19 @@ if (_origSetLang) {
   };
 }
 
-// Init
-buildSidebar();
+// Init — ждём готовности DOM
+function initCatalog() {
+  buildSidebar();
+  const hash = window.location.hash.replace('#', '');
+  if (hash && ['bench','urn','planter','furniture','sport','pavement','bollard'].includes(hash)) {
+    setFilter(hash, '');
+  } else {
+    filterCatalog();
+  }
+}
 
-// Если в URL есть якорь #bench, #urn и т.д. — открываем нужный раздел
-const hash = window.location.hash.replace('#', '');
-if (hash && ['bench','urn','planter','furniture','sport','pavement','bollard'].includes(hash)) {
-  setFilter(hash, '');
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCatalog);
 } else {
-  filterCatalog();
+  initCatalog();
 }
