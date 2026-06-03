@@ -82,12 +82,15 @@ function toggleMenu() {
   m.classList.toggle('open');
 }
 
-// Nav scroll
+// Nav scroll — если nav уже имеет класс scrolled в HTML, не убираем его при прокрутке вверх
 const navEl = document.getElementById('nav');
 if (navEl) {
-  window.addEventListener('scroll', () => {
-    navEl.classList.toggle('scrolled', window.scrollY > 60);
-  });
+  const alwaysScrolled = navEl.classList.contains('scrolled');
+  if (!alwaysScrolled) {
+    window.addEventListener('scroll', () => {
+      navEl.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  }
 }
 
 // Инициализация
