@@ -27,6 +27,8 @@ let currentSeries = '';
 // Строим сайдбар динамически
 function buildSidebar() {
   const menu = document.getElementById('sidebar-menu');
+  // Очищаем всё кроме первого элемента "Все изделия"
+  while (menu.children.length > 1) menu.removeChild(menu.lastChild);
   const allCount = document.getElementById('cnt-all');
   allCount.textContent = ITEMS.length;
 
