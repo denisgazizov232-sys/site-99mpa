@@ -40,7 +40,7 @@ async function submitForm(e) {
   btn.disabled = true;
 
   try {
-    const res = await fetch(`https://api.telegram.org/bot8600434161:AAELat2KBX2sELTjumoBJhmhoYb_SwBWCdk/sendMessage`, {
+    const res = await fetch(`https://api.telegram.org/bot8600434161:AAHhl1Y9uAjn-ekuQDraSdnwPMa-4rCysus/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: 716466548, text })
