@@ -24,10 +24,10 @@ async function submitForm(e) {
   // Honeypot — если заполнено, это бот
   if (document.getElementById('hp_field') && document.getElementById('hp_field').value) return;
 
-  const name  = inputs[0].value.trim();
-  const phone = inputs[1].value.trim();
-  const type  = inputs[2].value;
-  const msg   = inputs[3].value.trim();
+  const name  = form.querySelector('input[type=text]:not(#hp_field)').value.trim();
+  const phone = form.querySelector('input[type=tel]').value.trim();
+  const type  = form.querySelector('select').value;
+  const msg   = form.querySelector('textarea').value.trim();
 
   const typeLabels = {
     maf: 'МАФы / изделия', additive: 'Добавки',
