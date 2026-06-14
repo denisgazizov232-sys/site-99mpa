@@ -138,7 +138,7 @@ function renderGrid(items) {
       ? `<div class="cat-card__price">${item.price.toLocaleString('ru')} ₽</div>`
       : '';
     return `
-    <div class="cat-card" onclick="openModal('${item.n}')">
+    <div class="cat-card stagger-item" onclick="openModal('${item.n}')">
       <div class="cat-card__img" ${img}></div>
       <div class="cat-card__body">
         <div class="cat-card__series">${item.series}</div>
@@ -153,6 +153,23 @@ function renderGrid(items) {
   }).join('');
 
   document.getElementById('cat-count').textContent = `${items.length} позиций`;
+  animateGridCards();
+}
+
+// Появление карточек при прокрутке к ним
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      cardObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+function animateGridCards() {
+  document.querySelectorAll('#catalog-grid .cat-card.stagger-item').forEach(card => {
+    cardObserver.observe(card);
+  });
 }
 
 function openModal(num) {
@@ -178,14 +195,18 @@ function openModal(num) {
   const waText = encodeURIComponent(`Здравствуйте! Интересует изделие "${item.name}" (серия ${item.series}, ${item.size}). Подскажите цену и сроки.`);
   document.getElementById('modal-wa').href = `https://wa.me/79503208844?text=${waText}`;
 
-  document.getElementById('modal').classList.add('open');
+  const modal = document.getElementById('modal');
+  modal.style.display = 'flex';
+  requestAnimationFrame(() => modal.classList.add('open'));
   document.body.style.overflow = 'hidden';
 }
 
 function closeModal(e) {
   if (e && e.target !== document.getElementById('modal') && !e.target.classList.contains('modal__close')) return;
-  document.getElementById('modal').classList.remove('open');
+  const modal = document.getElementById('modal');
+  modal.classList.remove('open');
   document.body.style.overflow = '';
+  setTimeout(() => { modal.style.display = ''; }, 250);
 }
 
 function toggleCatalogMenu() {

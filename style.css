@@ -87,7 +87,7 @@ ul { list-style: none; }
 
 /* Hero */
 .hero { position: relative; height: 100vh; min-height: 620px; display: flex; align-items: center; overflow: hidden; }
-.hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.04); transition: transform 10s ease; }
+.hero__bg { position: absolute; inset: -10%; background-size: cover; background-position: center; transform: scale(1.04); transition: transform 10s ease; will-change: transform; }
 .hero:hover .hero__bg { transform: scale(1); }
 .hero__overlay { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.25) 100%); }
 .hero__content { position: relative; z-index: 1; max-width: 680px; padding: 0 24px 0 max(24px, calc((100vw - 1200px)/2 + 24px)); }
@@ -98,6 +98,24 @@ ul { list-style: none; }
 .hero__price { font-size: 13px; color: rgba(255,255,255,0.55); letter-spacing: 0.02em; }
 .hero__scroll { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.45); font-size: 20px; animation: bounce 2s infinite; z-index: 1; }
 @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+/* Анимация появления hero-контента при загрузке */
+.hero__label, .hero__title, .hero__sub, .hero__btns, .hero__price {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: heroUp 0.9s ease forwards;
+}
+.hero__label  { animation-delay: 0.05s; }
+.hero__title  { animation-delay: 0.15s; }
+.hero__sub    { animation-delay: 0.35s; }
+.hero__btns   { animation-delay: 0.5s; }
+.hero__price  { animation-delay: 0.62s; }
+@keyframes heroUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__label, .hero__title, .hero__sub, .hero__btns, .hero__price { animation: none; opacity: 1; transform: none; }
+}
 
 /* Stats */
 .stats { background: var(--black); padding: 56px 0; }
@@ -304,4 +322,22 @@ ul { list-style: none; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Поочерёдное появление карточек в сетках (stagger) */
+.stagger-item {
+  opacity: 0;
+  animation: staggerUp 0.6s ease forwards;
+  animation-play-state: paused;
+}
+.stagger-item.visible {
+  animation-play-state: running;
+}
+@keyframes staggerUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .stagger-item { opacity: 1; animation: none; }
+}
 
