@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://www.99mpa.com/portfolio.html">
   <meta property="og:title" content="Портфолио — 99МПа">
   <meta property="og:description" content="Реализованные проекты из архитектурного бетона по всей России.">
-  <meta property="og:image" content="https://www.99mpa.com/realizovannye-obekty/assets/img/bolgar/bolgar-hero.jpg">
+  <meta property="og:image" content="https://www.99mpa.com/images/portfolio_cases/bolgar-hero.jpg">
   <meta property="og:url" content="https://www.99mpa.com/portfolio.html">
   <link rel="icon" type="image/jpeg" href="images/logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +33,10 @@
       background: #f0f0ee;
       display: block;
       color: inherit;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      text-align: left;
     }
     .project-card img {
       width: 100%; height: 100%; object-fit: cover;
@@ -58,6 +62,40 @@
     .project-card__loc { font-size: 12px; opacity: 0.75; margin-top: 3px; }
     .project-card__link { font-size: 12px; opacity: 0.78; margin-top: 10px; font-weight: 700; }
 
+    .project-modal {
+      position: fixed; inset: 0; z-index: 500;
+      display: none; align-items: center; justify-content: center;
+      padding: 24px; background: rgba(0,0,0,0.72);
+    }
+    .project-modal.open { display: flex; }
+    .project-modal__panel {
+      width: min(1120px, 100%);
+      max-height: min(92vh, 860px);
+      overflow: auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    }
+    .project-modal__hero { width: 100%; aspect-ratio: 16/7; object-fit: cover; display: block; background: #eee; }
+    .project-modal__body { padding: 32px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr); gap: 32px; }
+    .project-modal__kicker { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a8a8a; margin-bottom: 10px; font-weight: 700; }
+    .project-modal__title { font-size: 34px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .project-modal__desc { color: #4d4d4d; line-height: 1.7; font-size: 16px; }
+    .project-modal__facts { display: grid; gap: 10px; }
+    .project-modal__fact { border-top: 1px solid #ececec; padding-top: 12px; }
+    .project-modal__fact span { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #888; margin-bottom: 4px; font-weight: 700; }
+    .project-modal__fact strong { font-size: 15px; color: #111; }
+    .project-modal__gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .project-modal__gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #eee; cursor: zoom-in; }
+    .project-modal__actions { grid-column: 1 / -1; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .project-modal__close {
+      position: fixed; top: 18px; right: 22px;
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 0; background: #fff; color: #111;
+      font-size: 26px; line-height: 1; cursor: pointer;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.24);
+    }
+
     /* Большая карточка */
     .project-card--wide { grid-column: span 2; }
     .project-card--tall { grid-row: span 2; }
@@ -70,12 +108,18 @@
       .projects-grid { grid-template-columns: repeat(2, 1fr); }
       .project-card--wide { grid-column: span 1; }
       .port-page h1 { font-size: 36px; }
+      .project-modal__body { grid-template-columns: 1fr; padding: 24px; }
+      .project-modal__gallery { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 560px) {
       .projects-grid { grid-template-columns: 1fr; }
       .project-card--tall { grid-row: span 1; }
       .project-card__info { opacity: 1; transform: translateY(0); }
       .project-card__overlay { opacity: 1; }
+      .project-modal { padding: 12px; align-items: stretch; }
+      .project-modal__panel { max-height: 100%; }
+      .project-modal__hero { aspect-ratio: 4/3; }
+      .project-modal__title { font-size: 28px; }
     }
   </style>
 </head>
@@ -107,104 +151,125 @@
 
     <div class="projects-grid">
 
-      <a class="project-card project-card--wide stagger-item" href="realizovannye-obekty/bolgar.html">
-        <img src="realizovannye-obekty/assets/img/bolgar/bolgar-hero.jpg" alt="Арки из архитектурного бетона в Болгаре" loading="lazy">
+      <button class="project-card project-card--wide stagger-item" type="button" onclick="openProject('bolgar')">
+        <img src="images/portfolio_cases/bolgar-hero.jpg" alt="Арки из архитектурного бетона в Болгаре" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Арки из архитектурного бетона</div>
           <div class="project-card__loc">Болгар, Республика Татарстан</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
-      <a class="project-card stagger-item" href="realizovannye-obekty/kamal-square.html">
-        <img src="realizovannye-obekty/assets/img/kamal/kamal-hero.jpg" alt="Скамейки у театра Камала" loading="lazy">
+      <button class="project-card stagger-item" type="button" onclick="openProject('kamal')">
+        <img src="images/portfolio_cases/kamal-hero.jpg" alt="Скамейки у театра Камала" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Сквер у театра им. Г. Камала</div>
           <div class="project-card__loc">Казань</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
-      <a class="project-card stagger-item" href="realizovannye-obekty/umai-park.html">
-        <img src="realizovannye-obekty/assets/img/umai/umai-hero.jpg" alt="Парк Умай" loading="lazy">
+      <button class="project-card stagger-item" type="button" onclick="openProject('umai')">
+        <img src="images/portfolio_cases/umai-hero.jpg" alt="Парк Умай" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Парк Умай</div>
           <div class="project-card__loc">Казань</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
-      <a class="project-card stagger-item" href="realizovannye-obekty/bolgar.html">
-        <img src="realizovannye-obekty/assets/img/bolgar/bolgar-06.jpg" alt="Детали арок из архитектурного бетона" loading="lazy">
+      <button class="project-card stagger-item" type="button" onclick="openProject('bolgar')">
+        <img src="images/portfolio_cases/bolgar-06.jpg" alt="Детали арок из архитектурного бетона" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Арки и декоративные элементы</div>
           <div class="project-card__loc">Болгар</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
-      <a class="project-card project-card--wide stagger-item" href="realizovannye-obekty/kamal-square.html">
-        <img src="realizovannye-obekty/assets/img/kamal/kamal-03.jpg" alt="Бетонные скамейки у театра Камала" loading="lazy">
+      <button class="project-card project-card--wide stagger-item" type="button" onclick="openProject('kamal')">
+        <img src="images/portfolio_cases/kamal-03.jpg" alt="Бетонные скамейки у театра Камала" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Скамейки у театра Камала</div>
           <div class="project-card__loc">Казань</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
-      <a class="project-card stagger-item" href="realizovannye-obekty/umai-park.html">
-        <img src="realizovannye-obekty/assets/img/umai/umai-02.jpg" alt="Малые архитектурные формы в парке Умай" loading="lazy">
+      <button class="project-card stagger-item" type="button" onclick="openProject('umai')">
+        <img src="images/portfolio_cases/umai-02.jpg" alt="Малые архитектурные формы в парке Умай" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Малые формы для общественного пространства</div>
           <div class="project-card__loc">Казань</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
-      <a class="project-card stagger-item" href="realizovannye-obekty/bolgar.html">
-        <img src="realizovannye-obekty/assets/img/bolgar/bolgar-08.jpg" alt="Готовый объект в Болгаре" loading="lazy">
+      <button class="project-card stagger-item" type="button" onclick="openProject('bolgar')">
+        <img src="images/portfolio_cases/bolgar-08.jpg" alt="Готовый объект в Болгаре" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Городское пространство с бетонными МАФ</div>
           <div class="project-card__loc">Болгар</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
-      <a class="project-card stagger-item" href="realizovannye-obekty/kamal-square.html">
-        <img src="realizovannye-obekty/assets/img/kamal/kamal-05.jpg" alt="Набережная у театра Камала" loading="lazy">
+      <button class="project-card stagger-item" type="button" onclick="openProject('kamal')">
+        <img src="images/portfolio_cases/kamal-05.jpg" alt="Набережная у театра Камала" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Набережная у театра Камала</div>
           <div class="project-card__loc">Казань</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
-      <a class="project-card project-card--wide stagger-item" href="realizovannye-obekty/umai-park.html">
-        <img src="realizovannye-obekty/assets/img/umai/umai-03.jpg" alt="Парк Умай в Казани" loading="lazy">
+      <button class="project-card project-card--wide stagger-item" type="button" onclick="openProject('umai')">
+        <img src="images/portfolio_cases/umai-03.jpg" alt="Парк Умай в Казани" loading="lazy">
         <div class="project-card__overlay"></div>
         <div class="project-card__info">
           <div class="project-card__name">Парк Умай: бетонные элементы в среде</div>
           <div class="project-card__loc">Казань</div>
-          <div class="project-card__link">Смотреть проект →</div>
+          <div class="project-card__link">Открыть детали</div>
         </div>
-      </a>
+      </button>
 
     </div>
 
     <div class="port-cta">
-      <p>Больше проектов — в нашем Instagram</p>
-      <a href="https://www.instagram.com/kwi.project" target="_blank" class="btn">Смотреть в Instagram →</a>
+      <p>Подберём изделия и фактуру под ваш объект</p>
+      <a href="index.html#contact" class="btn">Обсудить проект</a>
+      <a href="catalog.html" class="btn btn--outline-dark">Смотреть каталог</a>
     </div>
   </div>
 </section>
+
+<div class="project-modal" id="project-modal" onclick="closeProject(event)" aria-hidden="true">
+  <button class="project-modal__close" type="button" onclick="closeProject()" aria-label="Закрыть">×</button>
+  <div class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <img class="project-modal__hero" id="project-modal-hero" src="" alt="">
+    <div class="project-modal__body">
+      <div>
+        <div class="project-modal__kicker" id="project-modal-kicker"></div>
+        <h2 class="project-modal__title" id="project-modal-title"></h2>
+        <p class="project-modal__desc" id="project-modal-desc"></p>
+      </div>
+      <div class="project-modal__facts" id="project-modal-facts"></div>
+      <div class="project-modal__gallery" id="project-modal-gallery"></div>
+      <div class="project-modal__actions">
+        <a href="index.html#contact" class="btn" onclick="closeProject()">Обсудить похожий проект</a>
+        <a href="catalog.html" class="btn btn--outline-dark">Смотреть каталог</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <a href="https://wa.me/79503208844" class="wa-float" target="_blank">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.532 5.875L0 24l6.324-1.508A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.675-.502-5.21-1.378l-.374-.22-3.753.895.942-3.655-.242-.376A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill="white"/></svg>
@@ -213,5 +278,87 @@
 <script src="i18n.js"></script>
 <script src="nav.js"></script>
 <script src="main.js"></script>
+<script>
+const PORTFOLIO_PROJECTS = {
+  bolgar: {
+    kicker: 'Кейс 01 · Арки и малые формы',
+    title: 'Болгар',
+    hero: 'images/portfolio_cases/bolgar-hero.jpg',
+    desc: 'Ансамбль белых бетонных порталов с орнаментальными решетками, малые архитектурные формы и благоустройство территории в городе Болгар. Мотивы булгарского зодчества переведены в язык высокопрочного архитектурного бетона: чистая геометрия, точная резьба и детали, рассчитанные на городскую эксплуатацию.',
+    facts: [
+      ['Локация', 'Болгар, Республика Татарстан'],
+      ['Тип работ', 'Арки, малые формы, благоустройство'],
+      ['Материал', 'Архитектурный бетон']
+    ],
+    gallery: ['images/portfolio_cases/bolgar-hero.jpg', 'images/portfolio_cases/bolgar-01.jpg', 'images/portfolio_cases/bolgar-06.jpg', 'images/portfolio_cases/bolgar-08.jpg']
+  },
+  kamal: {
+    kicker: 'Кейс 02 · Скамейки и настилы',
+    title: 'Сквер у театра Камала',
+    hero: 'images/portfolio_cases/kamal-hero.jpg',
+    desc: 'Городской сквер с длинными бетонными скамьями, деревянными настилами и платформами среди озеленения. Сдержанные объемы и теплое дерево на прочном бетонном основании создают комфортную городскую среду, устойчивую к нагрузке и погоде.',
+    facts: [
+      ['Локация', 'Казань'],
+      ['Тип работ', 'Скамьи, настилы, благоустройство'],
+      ['Материал', 'Архитектурный бетон']
+    ],
+    gallery: ['images/portfolio_cases/kamal-hero.jpg', 'images/portfolio_cases/kamal-03.jpg', 'images/portfolio_cases/kamal-05.jpg']
+  },
+  umai: {
+    kicker: 'Кейс 03 · Общественное пространство',
+    title: 'Парк Умай',
+    hero: 'images/portfolio_cases/umai-hero.jpg',
+    desc: 'Благоустройство общественного пространства: бетонные скамьи с деревянными сиденьями и круглые вазоны-озеленители. Лаконичные монолитные объемы работают с ландшафтом и архитектурой, задавая ритм пешеходным маршрутам.',
+    facts: [
+      ['Локация', 'Казань'],
+      ['Тип работ', 'Скамьи, вазоны, благоустройство'],
+      ['Материал', 'Архитектурный бетон']
+    ],
+    gallery: ['images/portfolio_cases/umai-hero.jpg', 'images/portfolio_cases/umai-02.jpg', 'images/portfolio_cases/umai-03.jpg']
+  }
+};
+
+function openProject(id) {
+  const project = PORTFOLIO_PROJECTS[id];
+  if (!project) return;
+
+  document.getElementById('project-modal-kicker').textContent = project.kicker;
+  document.getElementById('project-modal-title').textContent = project.title;
+  document.getElementById('project-modal-desc').textContent = project.desc;
+
+  const hero = document.getElementById('project-modal-hero');
+  hero.src = project.hero;
+  hero.alt = project.title;
+
+  document.getElementById('project-modal-facts').innerHTML = project.facts.map(([label, value]) => `
+    <div class="project-modal__fact"><span>${label}</span><strong>${value}</strong></div>
+  `).join('');
+
+  document.getElementById('project-modal-gallery').innerHTML = project.gallery.map(src => `
+    <img src="${src}" alt="${project.title}" loading="lazy" onclick="setProjectHero('${src}')">
+  `).join('');
+
+  const modal = document.getElementById('project-modal');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function setProjectHero(src) {
+  document.getElementById('project-modal-hero').src = src;
+}
+
+function closeProject(event) {
+  const modal = document.getElementById('project-modal');
+  if (event && event.target !== modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeProject();
+});
+</script>
 </body>
 </html>
