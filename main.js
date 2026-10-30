@@ -15,53 +15,56 @@ function initSectionCards() {
 initSectionCards();
 
 // Form submit → Telegram
+// 99mpa-public-lead-v1: credentials and recipient are server-side.
 async function submitForm(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('button[type=submit]');
-  const inputs = form.querySelectorAll('input, select, textarea');
-
-  // Honeypot — если заполнено, это бот
-  if (document.getElementById('hp_field') && document.getElementById('hp_field').value) return;
-
-  const name  = form.querySelector('input[type=text]:not(#hp_field)').value.trim();
+  if (!btn || btn.disabled) return;
+  if (!form.reportValidity()) return;
+  const name = form.querySelector('input[type=text]:not(#hp_field)').value.trim();
   const phone = form.querySelector('input[type=tel]').value.trim();
-  const type  = form.querySelector('select').value;
-  const msg   = form.querySelector('textarea').value.trim();
-
-  const typeLabels = {
-    maf: 'МАФы / изделия', additive: 'Добавки',
-    b2b: 'Оптовое сотрудничество', custom: 'Индивидуальный заказ'
-  };
-
-  const text = `🏗 Новая заявка с сайта 99mpa\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📦 Тип: ${typeLabels[type] || type || 'не указан'}\n💬 Сообщение: ${msg || '—'}`;
-
-  btn.textContent = '...';
+  const type = form.querySelector('select').value;
+  const message = form.querySelector('textarea').value.trim();
+  const website = document.getElementById('hp_field')?.value || '';
+  if (website) return;
+  if (!form.dataset.leadRequestId) form.dataset.leadRequestId = crypto.randomUUID();
+  const params = new URL(location.href).searchParams;
+  const attribution = {};
+  for (const key of ['source', 'medium', 'campaign']) {
+    const value = params.get('utm_' + key);
+    if (value) attribution[key] = value.slice(0, 180);
+  }
+  btn.textContent = 'Отправляем…';
   btn.disabled = true;
-
+  let succeeded = false;
   try {
-    const res = await fetch(`https://api.telegram.org/bot8600434161:AAHhl1Y9uAjn-ekuQDraSdnwPMa-4rCysus/sendMessage`, {
+    const res = await fetch('/api/public-lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: 716466548, text })
+      body: JSON.stringify({request_id: form.dataset.leadRequestId, name, phone, type, message, website, attribution})
     });
     const data = await res.json();
-    if (data.ok) {
+    if (res.ok && data.ok === true) {
+      document.dispatchEvent(new Event('99mpa:lead-success'));
       btn.textContent = '✓ Заявка отправлена!';
       form.reset();
+      delete form.dataset.leadRequestId;
+      succeeded = true;
     } else {
-      throw new Error();
+      throw new Error('delivery not confirmed');
     }
   } catch {
-    btn.textContent = 'Ошибка — напишите в WhatsApp';
+    btn.textContent = 'Нет подтверждения — напишите в WhatsApp';
     btn.style.background = '#c0392b';
   }
-
   setTimeout(() => {
     btn.textContent = 'Отправить заявку';
     btn.disabled = false;
     btn.style.background = '';
-  }, 4000);
+    // A new confirmed submission receives a new id; uncertain retries retain it.
+    if (succeeded) delete form.dataset.leadRequestId;
+  }, 6000);
 }
 
 // Smooth scroll — только для якорных ссылок на этой же странице
